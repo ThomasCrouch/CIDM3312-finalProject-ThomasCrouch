@@ -1,0 +1,94 @@
+@page
+@model CIDM3312_finalProject_ThomasCrouch.Pages.Prisons.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Prisons</h1>
+
+<hr>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @{
+                    var firstSort = "first_asc";
+                    if (Model.CurrentSort == "first_asc")
+                    {
+                        firstSort = "first_desc";
+                    }
+                }
+                <a asp-page="./Index" asp-route-CurrentSort="@firstSort">@Html.DisplayNameFor(model => model.Prison[0].PrisonName)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prison[0].PrisonAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prison[0].WardenName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prison[0].GuardsEmployed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prison[0].SecurityLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prison[0].DateOpened)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Prison) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrisonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrisonAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WardenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuardsEmployed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecurityLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOpened)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PrisonID">Edit Prison Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PrisonID">Delete Prison</a> |
+                <a asp-page="./Details" asp-route-id="@item.PrisonID">List of Prisoners</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<hr>
+
+@{
+    var prevDisabled="";
+    if (Model.PageNum <= 1)
+    {
+        prevDisabled = "disabled";
+    }
+}
+
+<nav>
+  <ul class="pagination">
+    <li class="page-item @prevDisabled">
+	<a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a>
+    </li>
+    <li class="page-item">
+	<a class="page-link" asp-page="./Index" asp-route-PageNum="@(Model.PageNum + 1)">Next</a>
+    </li>
+  </ul>
+</nav>
+

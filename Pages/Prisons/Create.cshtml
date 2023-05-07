@@ -1,0 +1,59 @@
+@page
+@model CIDM3312_finalProject_ThomasCrouch.Pages.Prisons.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add Prison</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Prison.PrisonName" class="control-label"></label>
+                <input asp-for="Prison.PrisonName" class="form-control" />
+                <span asp-validation-for="Prison.PrisonName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prison.PrisonAddress" class="control-label"></label>
+                <input asp-for="Prison.PrisonAddress" class="form-control" />
+                <span asp-validation-for="Prison.PrisonAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prison.WardenName" class="control-label"></label>
+                <input asp-for="Prison.WardenName" class="form-control" />
+                <span asp-validation-for="Prison.WardenName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prison.GuardsEmployed" class="control-label"></label>
+                <input asp-for="Prison.GuardsEmployed" class="form-control" />
+                <span asp-validation-for="Prison.GuardsEmployed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prison.SecurityLevel" class="control-label"></label>
+                <input asp-for="Prison.SecurityLevel" class="form-control" />
+                <span asp-validation-for="Prison.SecurityLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prison.DateOpened" class="control-label"></label>
+                <input asp-for="Prison.DateOpened" class="form-control" />
+                <span asp-validation-for="Prison.DateOpened" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
